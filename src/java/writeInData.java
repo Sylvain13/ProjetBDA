@@ -7,9 +7,6 @@ import java.io.IOException;
 public class writeInData {
     private static writeInData instance;
 
-    public static void writeInfo(String date, String userName, String text) throws IOException {
-        FileWriter fos = new FileWriter(new File("data.csv"), true);
-        fos.write('\"'  + date + "\";\"" + userName + "\";\"" + text + "\";");
     private writeInData() {
     }
 
