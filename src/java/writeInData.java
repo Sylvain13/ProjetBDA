@@ -6,6 +6,6 @@ import java.io.FileOutputStream;
 
 public class writeInData {
     public static void writeInfo(String date,String userName, String title, String link){
-        fos = new FileOutputStream(new File("../../data.csv"));
+       FileOutputStream fos = new FileOutputStream(new File("../../data.csv"));
     }
 }
