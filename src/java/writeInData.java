@@ -18,11 +18,13 @@ public class writeInData {
 
     //PHASE 1
     public void convertCSVToTrans(String pathCSV, String pathTrans) {
+
     }
 
     public void convertTransToCSV(String pathCSV, String pathTrans) {
 
     }
+
 
     //PHASE 0
     public void writeInfo(Date dateT, String userName, String text) throws IOException {
@@ -40,11 +42,12 @@ public class writeInData {
     public void readInfo() throws IOException {
 
         FileReader fr = new FileReader(new File("data.csv"));
-        char [] a = new char[2054];
+        char [] a = new char[100];
         fr.read(a);   // reads the content to the array
 
         for(char c : a)
             System.out.print(c + "/n");   // prints the characters one by one
         fr.close();
     }
+
 }
