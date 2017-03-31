@@ -25,10 +25,7 @@ public class writeInData {
     }
 
     //PHASE 0
-    public void writeInfo (String date, String name, String text) throws IOException {
-        FileWriter fos = new FileWriter(new File("../../data.csv"), true);
-        fos.write('\"' + date + "\";\"" + name + "\";\"" + text + "\";");
-    public static void writeInfo(Date dateT, String userName, String text) throws IOException {
+    public void writeInfo(Date dateT, String userName, String text) throws IOException {
 
 
         Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
