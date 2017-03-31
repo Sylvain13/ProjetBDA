@@ -32,7 +32,7 @@ public class writeInData {
         String date = formatter.format(dateT);
 
         FileWriter fos = new FileWriter(new File("data.csv"), true);
-        fos.write('\"'  + date + "\";\"" + userName + "\";\"" + text + "\";" + "/n");
+        fos.write('\"'  + date + "\";\"" + userName + "\";\"" + text + "\";" + "\n");
         fos.flush();
         fos.close();
     }
@@ -44,7 +44,7 @@ public class writeInData {
         fr.read(a);   // reads the content to the array
 
         for(char c : a)
-            System.out.print(c);   // prints the characters one by one
+            System.out.print(c + "/n");   // prints the characters one by one
         fr.close();
     }
 }
