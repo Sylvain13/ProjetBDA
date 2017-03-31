@@ -32,12 +32,16 @@ public class ConnexionTwitter {
         for (Status status : statuses) {
             Date date = status.getCreatedAt();
             String name = status.getUser().getName();
-            String text = status.getText();
-            System.out.println(status.getCreatedAt() + ";@" +
-                    status.getUser().getName() + ";" +
-                    status.getText() + ";");
+            String text;
+            if (status.getText() != null)
+                text = status.getText();
+            else text="blabla";
+//            System.out.println(status.getCreatedAt() + ";@" +
+//                    status.getUser().getName() + ";" +
+//                    status.getText() + ";");
             writeInData tool = writeInData.getInstance();
             tool.writeInfo(date, name, text);
+            tool.readInfo();
         }
     }
 

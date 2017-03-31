@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class writeInData {
-    private static writeInData instance;
+    private static writeInData instance = new writeInData();
 
     private writeInData() {
     }
