@@ -4,65 +4,35 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
+import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * Created by Sylvai on 31/03/2017.
- */
+*/
+
 public class ConnexionTwitter {
     public static void main(String args[]) throws Exception{
+        ConfigurationBuilder cb = new ConfigurationBuilder();
+        cb.setOAuthConsumerKey("643EvG0o2whmIp1IpFAqj9Dfm") //consumer key
+                .setOAuthConsumerSecret("iIpUpPYPc74jUheIXuVLwaACmnYHH9E1oj0bh7H97ANJRDv2Vj") //consumer secret
+                .setOAuthAccessToken("1315585075-pCQjLS7cQGBqjJUJbTDM6ySqCEC4BqFWEfH2MiS")
+                .setOAuthAccessTokenSecret("265Buf3fbDGAi628rEcYvfKKY9OHnBAdqTqehljIrI5AD");
+        TwitterFactory tf = new TwitterFactory(cb.build());
+        Twitter tw = tf.getSingleton();
+
         // The factory instance is re-useable and thread safe.
-        Twitter twitter = TwitterFactory.getSingleton();
-        twitter.setOAuthConsumer("[consumer key]", "[consumer secret]");
-        RequestToken requestToken = twitter.getOAuthRequestToken();
-        AccessToken accessToken = null;
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while (null == accessToken) {
-            System.out.println("Open the following URL and grant access to your account:");
-            System.out.println(requestToken.getAuthorizationURL());
-            System.out.print("Enter the PIN(if aviailable) or just hit enter.[PIN]:");
-            String pin = br.readLine();
-            try{
-                if(pin.length() > 0){
-                    accessToken = twitter.getOAuthAccessToken(requestToken, pin);
-                }else{
-                    accessToken = twitter.getOAuthAccessToken();
-                }
-            } catch (TwitterException te) {
-                if(401 == te.getStatusCode()){
-                    System.out.println("Unable to get the access token.");
-                }else{
-                    te.printStackTrace();
-                }
-            }
+        //tw = TwitterFactory.getSingleton();
+        List<Status> statuses = tw.getHomeTimeline();
+        System.out.println("Showing home timeline.");
+        for (Status status : statuses) {
+            System.out.println(status.getUser().getName() + ":" +
+                    status.getText());
         }
-        //persist to the accessToken for future reference.
-        storeAccessToken(twitter.verifyCredentials().getId() , accessToken);
-        Status status = twitter.updateStatus(args[0]);
-        System.out.println("Successfully updated the status to [" + status.getText() + "].");
-        System.exit(0);
+
     }
-    private static void storeAccessToken(int useId, AccessToken accessToken){
-        //store accessToken.getToken()
-        //store accessToken.getTokenSecret()
-    }
-    //After you acquired the AccessToken for the user, the RequestToken is not required anymore. You can persist the AccessToken to any kind of persistent store such as RDBMS, or File system by serializing the object, or by geting the token and the secret from AccessToken#getToken() and AccessToken#getTokenSecret().
-    public static void main(String args[]) throws Exception{
-        // The factory instance is re-useable and thread safe.
-        TwitterFactory factory = new TwitterFactory();
-        AccessToken accessToken = loadAccessToken(Integer.parseInt(args[0]));
-        Twitter twitter = factory.getInstance();
-        twitter.setOAuthConsumerKey("[consumer key]", "[consumer secret]");
-        twitter.setOAuthAccessToken(accessToken);
-        Status status = twitter.updateStatus(args[1]);
-        System.out.println("Successfully updated the status to [" + status.getText() + "].");
-        System.exit(0);
-    }
-    private static AccessToken loadAccessToken(int useId){
-        String token = // load from a persistent store
-                String tokenSecret = // load from a persistent store
-        return new AccessToken(token, tokenSecret);
-    }
+
 }
