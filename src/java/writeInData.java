@@ -32,7 +32,7 @@ public class writeInData {
         String date = formatter.format(dateT);
 
         FileWriter fos = new FileWriter(new File("data.csv"), true);
-        fos.write('\"'  + date + "\";\"" + userName + "\";\"" + text + "\";" + "\n");
+        fos.write('\"'  + date + "\";\"" + userName + "\";\"" + text + "\";" + "/n");
         fos.flush();
         fos.close();
     }
