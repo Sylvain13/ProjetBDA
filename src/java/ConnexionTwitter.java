@@ -22,7 +22,7 @@ public class ConnexionTwitter {
                 .setOAuthAccessToken("1315585075-pCQjLS7cQGBqjJUJbTDM6ySqCEC4BqFWEfH2MiS")
                 .setOAuthAccessTokenSecret("265Buf3fbDGAi628rEcYvfKKY9OHnBAdqTqehljIrI5AD");
         TwitterFactory tf = new TwitterFactory(cb.build());
-        Twitter tw = tf.getSingleton();
+        Twitter tw = tf.getInstance();
 
         // The factory instance is re-useable and thread safe.
         //tw = TwitterFactory.getSingleton();
@@ -33,6 +33,9 @@ public class ConnexionTwitter {
                     status.getText());
         }
 
+        writeInData writer = new writeInData();
+        writer.writeInfo("bonjour","toto","mon titre de merde");
     }
+
 
 }
