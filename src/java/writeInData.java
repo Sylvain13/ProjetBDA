@@ -40,14 +40,15 @@ public class writeInData {
     }
 
     public void readInfo() throws IOException {
+        String line = null;
+        FileReader fileReader = new FileReader("data.csv");
 
-        FileReader fr = new FileReader(new File("data.csv"));
-        char [] a = new char[100];
-        fr.read(a);   // reads the content to the array
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        for(char c : a)
-            System.out.print(c + "/n");   // prints the characters one by one
-        fr.close();
+        while((line = bufferedReader.readLine()) != null) {
+            System.out.println(line);
+        }
+
+        bufferedReader.close();
     }
-
 }
