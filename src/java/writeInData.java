@@ -18,11 +18,13 @@ public class writeInData {
 
     //PHASE 1
     public void convertCSVToTrans(String pathCSV, String pathTrans) {
+
     }
 
     public void convertTransToCSV(String pathCSV, String pathTrans) {
 
     }
+
 
     //PHASE 0
     public void writeInfo(Date dateT, String userName, String text) throws IOException {
