@@ -37,7 +37,7 @@ public class writeInData {
         fos.close();
     }
 
-    public void readInfo() throws FileNotFoundException {
+    public void readInfo() throws IOException {
 
         FileReader fr = new FileReader(new File("data.csv"));
         char [] a = new char[50];
