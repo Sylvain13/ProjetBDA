@@ -12,6 +12,19 @@ import java.lang.String;
 public class DictionnaireMotif {
     //associer chaque motif frequent à un int en fonction de sa frequence
     private HashMap<Integer,String> dico = new HashMap<Integer,String>();
+    //boucle jusque eof
 
 
 }
+
+
+//
+//    static int intDico = 0;
+//
+//    public static void main(String[] args) {
+//        //csvToTrans("test.csv", "test.trans");
+//        //transToCsv("test.trans", "testRetourTrans.csv");
+//        //outToCsv("test.out", "testRetourOut.csv");
+//    }
+
+
