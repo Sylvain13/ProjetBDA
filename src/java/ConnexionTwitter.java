@@ -9,6 +9,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Date;
 
 /**
  * Created by Sylvai on 31/03/2017.
@@ -29,12 +30,15 @@ public class ConnexionTwitter {
         List<Status> statuses = tw.getHomeTimeline();
         System.out.println("Showing home timeline.");
         for (Status status : statuses) {
-            System.out.println(status.getUser().getName() + ":" +
-                    status.getText());
+            Date date = status.getCreatedAt();
+            String name = status.getUser().getName();
+            String text = status.getText();
+            System.out.println(status.getCreatedAt() + ";@" +
+                    status.getUser().getName() + ";" +
+                    status.getText() + ";");
+            writeInData tool = writeInData.getInstance();
+            tool.writeInfo(date, name, text);
         }
-
-        writeInData writer = new writeInData();
-        writer.writeInfo("bonjour","toto","mon titre de merde");
     }
 
 
