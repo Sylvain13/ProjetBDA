@@ -40,7 +40,7 @@ public class writeInData {
     public void readInfo() throws IOException {
 
         FileReader fr = new FileReader(new File("data.csv"));
-        char [] a = new char[50];
+        char [] a = new char[2054];
         fr.read(a);   // reads the content to the array
 
         for(char c : a)
