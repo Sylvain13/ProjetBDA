@@ -54,14 +54,3 @@ public class DictionnaireMotif {
     }
 }
 
-
-//
-//    static int intDico = 0;
-//
-//    public static void main(String[] args) {
-//        //csvToTrans("test.csv", "test.trans");
-//        //transToCsv("test.trans", "testRetourTrans.csv");
-//        //outToCsv("test.out", "testRetourOut.csv");
-//    }
-
-
