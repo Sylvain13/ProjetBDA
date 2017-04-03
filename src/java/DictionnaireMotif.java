@@ -16,6 +16,10 @@ public class DictionnaireMotif {
     private static int intDico =0;
     //boucle jusque eof
 
+    public HashMap<Integer,String> getMap() {
+        return dico;
+    }
+
     private static DictionnaireMotif instance = new DictionnaireMotif();
 
     private DictionnaireMotif(){}
@@ -24,9 +28,10 @@ public class DictionnaireMotif {
         return instance;
     }
 
-    public void updateDico(String words){
-        if (! dico.containsKey(words))
-               dico.put(intDico++,words);
+    public void updateDico(String value){
+        if (!dico.containsValue(value)) {
+            dico.put(intDico++, value);
+        }
     }
 
     public Integer returnValue(String word){
@@ -40,10 +45,6 @@ public class DictionnaireMotif {
        return null;
     }
 
-    public HashMap getArraySansDoublons(HashMap dico) {
-        return null;
-    }
-
     public void chargeFic()throws IOException{
         FileWriter fos = new FileWriter(new File("dico.txt"), true);
         for(Map.Entry<Integer, String> entry : dico.entrySet()) {
@@ -53,4 +54,15 @@ public class DictionnaireMotif {
         }
     }
 }
+
+
+//
+//    static int intDico = 0;
+//
+//    public static void main(String[] args) {
+//        //csvToTrans("test.csv", "test.trans");
+//        //transToCsv("test.trans", "testRetourTrans.csv");
+//        //outToCsv("test.out", "testRetourOut.csv");
+//    }
+
 
