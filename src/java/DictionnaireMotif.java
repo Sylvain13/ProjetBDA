@@ -44,12 +44,12 @@ public class DictionnaireMotif {
         return null;
     }
 
-    public void chargeFic(){
+    public void chargeFic()throws IOException{
+        FileWriter fos = new FileWriter(new File("dico.txt"), true);
         for(Map.Entry<Integer, String> entry : dico.entrySet()) {
             Integer key = entry.getKey();
             String value = entry.getValue();
-
-            System.out.println("key : " + key + " value : " + value);
+            fos.write("key : "+ key + "; value : " + value + "\n");
         }
     }
 }
