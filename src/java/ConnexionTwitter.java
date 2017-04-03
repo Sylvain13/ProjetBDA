@@ -1,7 +1,4 @@
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
+import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import twitter4j.conf.ConfigurationBuilder;
@@ -26,23 +23,21 @@ public class ConnexionTwitter {
         Twitter tw = tf.getInstance();
 
         // The factory instance is re-useable and thread safe.
-        //tw = TwitterFactory.getSingleton();
-        List<Status> statuses = tw.getHomeTimeline();
-        System.out.println("Showing home timeline.");
-        for (Status status : statuses) {
-            Date date = status.getCreatedAt();
-            String name = status.getUser().getName();
-            String text;
-            if (status.getText() != null)
-                text = status.getText();
-            else text="blabla";
-//            System.out.println(status.getCreatedAt() + ";@" +
-//                    status.getUser().getName() + ";" +
-//                    status.getText() + ";");
-            writeInData tool = writeInData.getInstance();
+        Twitter twitter = TwitterFactory.getSingleton();
+        Query query = new Query("#peace");
+        QueryResult result = twitter.search(query);
+        Date date;
+        String name;
+        String text;
+        writeInData tool = writeInData.getInstance();
+        for (Status status : result.getTweets()) {
+            date = status.getCreatedAt();
+            name = status.getUser().getName();
+            text = status.getText();
             tool.writeInfo(date, name, text);
-            tool.readInfo();
         }
+        System.out.println("Showing result query");
+        tool.readInfo();
     }
 
 

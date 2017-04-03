@@ -4,7 +4,7 @@ import java.util.HashMap;
  * Created by Sylvai on 31/03/2017.
  */
 public class Calcul {
-    private static Calcul instance = new Calcul();
+    private static Calcul instance = new Calcul(); //le out
 
     private Calcul(){}
 
