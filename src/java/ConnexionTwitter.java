@@ -21,11 +21,8 @@ public class ConnexionTwitter {
                 .setOAuthAccessTokenSecret("265Buf3fbDGAi628rEcYvfKKY9OHnBAdqTqehljIrI5AD");
         TwitterFactory tf = new TwitterFactory(cb.build());
         Twitter tw = tf.getInstance();
-
-        // The factory instance is re-useable and thread safe.
-        Twitter twitter = TwitterFactory.getSingleton();
-        Query query = new Query("#peace");
-        QueryResult result = twitter.search(query);
+        Query query = new Query("hello");
+        QueryResult result = tw.search(query);
         Date date;
         String name;
         String text;
@@ -38,7 +35,9 @@ public class ConnexionTwitter {
         }
         System.out.println("Showing result query");
         tool.readInfo();
-    }
+        tool.convertCSVToTrans("data.csv", "data.trans");
+        //TODO ton pere au dessus
 
+    }
 
 }

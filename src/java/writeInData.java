@@ -21,7 +21,7 @@ public class writeInData {
 
     //PHASE 1
     public void convertCSVToTrans(String fileIn, String fileOut) {
-        String fileDico = "data.csv";
+        //String fileDico = "data.csv";
         try {
             DictionnaireMotif dicoDirect = DictionnaireMotif.getInstance();
 
@@ -35,18 +35,18 @@ public class writeInData {
                 String[] result = fileIn.split(";");
                 for (int i = 0; result.length > i; i++) {
                     dicoDirect.updateDico(result[i]);
-                    writer.print(dicoDirect.returnValue(result[i]));
+                    writer.print(dicoDirect.returnValue(result[i])); //renvoie null
                     writer.print(" ");
                 }
                 writer.println();
             }
 
-            FileOutputStream fos = new FileOutputStream(fileDico);
-            ObjectOutputStream writerDico = new ObjectOutputStream(fos);
+            //FileOutputStream fos = new FileOutputStream(fileDico);
+            //ObjectOutputStream writerDico = new ObjectOutputStream(fos);
 
             dicoDirect.chargeFic();
 
-            writerDico.close();
+            //writerDico.close();
             brIn.close();
             writer.close();
         }
@@ -129,7 +129,7 @@ public class writeInData {
                     dico.entrySet()
                             .stream()
                             .filter(e -> e.getValue().equals(value))
-                            .map(e -> e.getKey())
+                            .map(Map.Entry::getKey)
                             .forEach(writer::print);
                     writer.print(";");
                 }
