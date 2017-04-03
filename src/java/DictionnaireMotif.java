@@ -29,8 +29,19 @@ public class DictionnaireMotif {
                dico.put(intDico++,words);
     }
 
-    public String returnValue(String word){
-       return dico.get(word);
+    public Integer returnValue(String word){
+        for(Map.Entry<Integer, String> entry : dico.entrySet()) {
+            Integer key = entry.getKey();
+            String value = entry.getValue();
+            if (value.equals(word)) {
+                return key;
+            }
+        }
+       return null;
+    }
+
+    public HashMap getArraySansDoublons(HashMap dico) {
+        return null;
     }
 
     public void chargeFic(){

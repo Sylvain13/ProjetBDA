@@ -34,7 +34,6 @@ public class writeInData {
                 lineNumber++;
                 String[] result = fileIn.split(";");
                 for (int i = 0; result.length > i; i++) {
-                    System.out.println(result[i]);
                     dicoDirect.updateDico(result[i]);
                     writer.print(dicoDirect.returnValue(result[i])); //renvoie null
                     writer.print(" ");
@@ -165,7 +164,7 @@ public class writeInData {
         FileWriter fos = new FileWriter(new File("data.csv"), true);
         fos.write('\"'  + date + "\";\"" + userName + "\";\"" );
         for (int i = 0; i < text.length; i++) {
-            fos.write(text[i] + "\";");
+            fos.write(text[i] + "\";\"");
         }
         fos.flush();
         fos.close();

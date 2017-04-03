@@ -68,7 +68,7 @@ public class ConnexionTwitter {
     }
 
     public static void main(String args[]) throws Exception{
-        initialisation();
+//        initialisation();
         writeInData tool = writeInData.getInstance();
         tool.convertCSVToTrans("data.csv", "data.trans");
 
