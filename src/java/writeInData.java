@@ -5,6 +5,8 @@ import java.io.*;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class writeInData {
     private static writeInData instance = new writeInData();
@@ -15,15 +17,16 @@ public class writeInData {
     public static writeInData getInstance() {
         return instance;
     }
+    static int intDico =0;
 
     //PHASE 1
-    public void convertCSVToTrans(String pathCSV, String pathTrans) {
+    public void convertCSVToTrans(String fileIn, String fileOut) {
         String fileDico = "data.csv";
         try {
+            DictionnaireMotif dicoDirect = DictionnaireMotif.getInstance();
+
             BufferedReader brIn = new BufferedReader( new FileReader(fileIn));
             PrintWriter writer = new PrintWriter(new FileWriter(fileOut));
-
-            Map<String, Integer> dico = new HashMap<String, Integer>();
 
             int lineNumber = 0;
 
@@ -31,9 +34,8 @@ public class writeInData {
                 lineNumber++;
                 String[] result = fileIn.split(";");
                 for (int i = 0; result.length > i; i++) {
-                    if (! dico.containsKey(result[i]))
-                        dico.put(result[i], intDico++);
-                    writer.print(dico.get(result[i]));
+                    dicoDirect.updateDico(result[i]);
+                    writer.print(dicoDirect.returnValue(result[i]));
                     writer.print(" ");
                 }
                 writer.println();
@@ -42,7 +44,7 @@ public class writeInData {
             FileOutputStream fos = new FileOutputStream(fileDico);
             ObjectOutputStream writerDico = new ObjectOutputStream(fos);
 
-            writerDico.writeObject(dico);
+            dicoDirect.chargeFic();
 
             writerDico.close();
             brIn.close();
@@ -56,7 +58,7 @@ public class writeInData {
         }
     }
 
-    public void convertTransToCSV(String pathCSV, String pathTrans) {
+    public void convertTransToCSV(String fileIn, String fileOut) {
         String fileDico = "dico.txt";
         try {
             Map<String, Integer> dico;
