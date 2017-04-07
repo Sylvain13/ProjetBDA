@@ -11,21 +11,18 @@ import java.lang.String;
 import java.util.Map;
 
 public class DictionnaireMotif {
-    //associer chaque motif frequent à un int en fonction de sa frequence
     private HashMap<Integer,String> dico = new HashMap<Integer,String>();
     private static int intDico =0;
-    //boucle jusque eof
-
-    public HashMap<Integer,String> getMap() {
-        return dico;
-    }
-
     private static DictionnaireMotif instance = new DictionnaireMotif();
 
     private DictionnaireMotif(){}
 
     public static DictionnaireMotif getInstance(){
         return instance;
+    }
+
+    public HashMap<Integer,String> getMap() {
+        return dico;
     }
 
     public void updateDico(String value){

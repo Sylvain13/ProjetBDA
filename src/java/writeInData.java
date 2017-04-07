@@ -185,8 +185,12 @@ public class writeInData {
     }
 
     public void outToReglesAssoc() {
-        //for chaque itemset Y trouver les X non vide de Y tq confiance >= MinConf
-        //for all X, faire X -> (Y-X) si Conf(X->(Y-X),D) >= MinConf
-        //Confiance = freq / freq
+        //dans data.out parcourir lignes
+        //for chaque ligne
+            //trouver les X non vide de Y tq Confiance >= MinConf
+
+        //for all X
+            // faire X -> (Y-X) si Conf(X->(Y-X),D) >= MinConf
+            //Confiance = freq / freq
     }
 }

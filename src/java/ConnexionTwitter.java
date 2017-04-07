@@ -61,9 +61,10 @@ public class ConnexionTwitter {
 
     public static void main(String args[]) throws Exception{
         //initialisation();
-        writeInData tool = writeInData.getInstance();
-        tool.convertCSVToTrans("data.csv", "data.trans");
-
+//        writeInData tool = writeInData.getInstance();
+//        tool.convertCSVToTrans("data.csv", "data.trans");
+        Motif m = new Motif("12","21");
+        m.saveInfoOUT();
     }
 
 }
