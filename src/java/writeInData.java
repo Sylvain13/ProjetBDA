@@ -164,8 +164,9 @@ public class writeInData {
         FileWriter fos = new FileWriter(new File("data.csv"), true);
         fos.write('\"'  + date + "\";\"" + userName + "\";\"" );
         for (int i = 0; i < text.length; i++) {
-            fos.write(text[i] + "\";\"");
+            fos.write("\"" + text[i] + "\";");
         }
+        fos.write("\n");
         fos.flush();
         fos.close();
     }
@@ -181,5 +182,11 @@ public class writeInData {
         }
 
         bufferedReader.close();
+    }
+
+    public void outToReglesAssoc() {
+        //for chaque itemset Y trouver les X non vide de Y tq confiance >= MinConf
+        //for all X, faire X -> (Y-X) si Conf(X->(Y-X),D) >= MinConf
+        //Confiance = freq / freq
     }
 }
