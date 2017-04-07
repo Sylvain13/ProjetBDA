@@ -53,6 +53,19 @@ public class DictionnaireMotif {
             fos.write("key : "+ key + "; value : " + value + "\n");
         }
     }
+
+//    public void chargerClass()throws IOException{
+//        String line = null;
+//        FileReader fileReader = new FileReader("data.csv");
+//
+//        BufferedReader bufferedReader = new BufferedReader(fileReader);
+//
+//        while((line = bufferedReader.readLine()) != null) {
+//            System.out.println(line);
+//        }
+//
+//        bufferedReader.close();
+//    }
 }
 
 
